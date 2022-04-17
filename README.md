@@ -1,5 +1,7 @@
 # 功能说明
     通过 ocr api 识别图片内容，然后通过 dbscan 算法聚类位置信息，最后生成 csv 表格
+# 使用说明
+    修改 `src/config.py` 设置 APP_ID\APP_KEY\SECRET_KEY
 # 模块说明
 ## load_image_from_clipboard.py
     从剪贴板获取图片内容

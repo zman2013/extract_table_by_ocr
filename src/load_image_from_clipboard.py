@@ -2,7 +2,7 @@ from PIL import ImageGrab
 import os
 
 # 从剪贴板获取图片内容
-def loadImage():
+def load_image_from_clipboard():
     tmp_image_path = 'tmp.png'
     im = ImageGrab.grabclipboard()
     # Encode your PIL Image as a JPEG without writing to disk

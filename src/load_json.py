@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # 读取 json 返回 df
-def local_json(filepath):
+def load_json(filepath):
     with open(filepath) as json_file:
         data = json.load(json_file)
 

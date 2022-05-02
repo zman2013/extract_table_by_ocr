@@ -29,25 +29,61 @@ def cluster(df, column_name='', eps=5, min_samples=1):
     print(df.groupby('cluster_db').mean())
 
 
+# 合并’左、右‘两个维度的集群，同一个元素归属归属于那个较大的集群
+# 例：word1
+#   按’左‘维度，归属于集群 left_0，该集群元素个数为 4
+#   按’右‘维度，归属于集群 right_0，该集群元素个数为 1
+#   则 word1 归属于’左‘集群
+#   设置 left_right_combine_cluster_db = combine_cluster_db_index ++
+def combine_left_right_labels(df):
+    left_groups = df.groupby('left_cluster_db').groups
+    right_groups = df.groupby('right_cluster_db').groups
+    # label -> combine_cluster_db
+    # 例：{left_0 : 0, right_0 : 1}
+    label_cluster_db_mapping = {}
+    combine_cluster_db_index = 0
+    combine_cluster_db_column = []
+    for _, line in df.iterrows():
+        left_cluster_db = line['left_cluster_db']
+        right_cluster_db = line['right_cluster_db']
+        left_group = left_groups[left_cluster_db]
+        right_group = right_groups[right_cluster_db]
+
+        if len(left_group) > len(right_group):
+            label = 'left_'+str(left_cluster_db)
+        else:
+            label = 'right_'+str(right_cluster_db)
+
+        if label_cluster_db_mapping.__contains__(label) == False:
+            label_cluster_db_mapping[label] = combine_cluster_db_index
+            combine_cluster_db_index += 1
+        combine_cluster_db_column.append(label_cluster_db_mapping.get(label))
+    df['left_right_combine_cluster_db'] = combine_cluster_db_column
+    return df
+
 import os
 # 计算字段的归属位置，然后返回 df
 def compute_location(df):
 
     # df = pd.read_csv(filepath)
     df = cluster(df, 'top')
-    df = cluster(df, 'left', eps=100, min_samples=5)
+    df = cluster(df, 'left', eps=10, min_samples=1)
+    df['right'] = df['left'] + df['width']
+    df = cluster(df, 'right', eps=10, min_samples=1)
+
+    df = combine_left_right_labels(df)
 
     pre_data = {}
     for _, row in df.iterrows():
         top_cluster = row['top_cluster_db']
-        left_cluster = row['left_cluster_db']
+        left_cluster = row['left_right_combine_cluster_db']
         pre_data.setdefault(top_cluster, {})
         pre_data[top_cluster].setdefault(left_cluster, {})
         pre_data[top_cluster][left_cluster] = row['words']
 
     data = []
     for _, value in pre_data.items():
-        list = [0] * 4
+        list = [0] * 10
         for k, v in value.items():
             list[k] = v
         data.append(list)
@@ -55,3 +91,17 @@ def compute_location(df):
     df = pd.DataFrame(data)
     return df
     df.to_csv(os.path.splitext(filepath)[0] + '.result.csv', index=False)
+
+
+from config import today_dir
+import os
+from load_json import load_json
+if __name__ == '__main__':
+    for dir_path, dir_list, file_name_list in os.walk(today_dir()):
+        for file_name in file_name_list:
+            file_path = os.path.join(dir_path, file_name)
+            if os.path.splitext(file_path)[1] == '.json':
+                print(f'process {file_path}')
+                df = load_json(file_path)
+                df = compute_location(df)
+                df.to_csv(os.path.splitext(file_path)[0]+ '.csv', index=False)  

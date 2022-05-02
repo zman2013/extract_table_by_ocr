@@ -73,22 +73,48 @@ def compute_location(df):
 
     df = combine_left_right_labels(df)
 
+# {
+#   top_cluster : {
+#     left_cluster : {
+#       words: ${words},
+#       left: ${left}
+#     }
+#   }
+# }
     pre_data = {}
     for _, row in df.iterrows():
         top_cluster = row['top_cluster_db']
         left_cluster = row['left_right_combine_cluster_db']
         pre_data.setdefault(top_cluster, {})
         pre_data[top_cluster].setdefault(left_cluster, {})
-        pre_data[top_cluster][left_cluster] = row['words']
+        pre_data[top_cluster][left_cluster] = {
+            "words" : row['words'],
+            "left" : row['left']
+        }
 
+    column_count = 30
+    column_name_initial_value = 1_000_000_000
+    columns = [i for i in range(column_name_initial_value, column_name_initial_value+column_count)]
     data = []
     for _, value in pre_data.items():
-        list = [0] * 10
+        list = [0] * column_count
         for k, v in value.items():
-            list[k] = v
+            list[k] = v['words']
+            if columns[k] > v['left']:
+                columns[k] = v['left']
         data.append(list)
 
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(data, columns=columns)
+
+#   删除没有用到的 columns
+    columns_drop = []
+    for column_name in df.columns.values.tolist():
+        if column_name >= column_name_initial_value:
+            columns_drop.append(column_name)
+    df = df.drop(columns_drop, axis=1)
+
+#   按 column name 大小排序
+    df = df.reindex(sorted(df.columns), axis=1)
     return df
     df.to_csv(os.path.splitext(filepath)[0] + '.result.csv', index=False)
 

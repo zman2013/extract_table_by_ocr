@@ -100,8 +100,7 @@ def compute_location(df):
         list = [0] * column_count
         for k, v in value.items():
             list[k] = v['words']
-            if columns[k] > v['left']:
-                columns[k] = v['left']
+            columns[k] = v['left']   # 选用最后一行的左坐标，开头几行是文字标题坐标不太合适，比如：(人民幣百萬元，另有指明者除外)
         data.append(list)
 
     df = pd.DataFrame(data, columns=columns)

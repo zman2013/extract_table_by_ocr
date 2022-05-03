@@ -4,3 +4,4 @@ lib
 bin
 share
 data
+**/__pycache__/

@@ -43,7 +43,7 @@ if __name__ == '__main__':
                 print(f'process {file_path}')
                 df = pd.read_csv(file_path)
                 first_column = df.iloc[:,0].tolist()
-                if '收入總额' in first_column:  
+                if '收入成本總额' in first_column:  
                     print(f'good')
                     year = df.iloc[1, 2]
                     year = convert_chinese_year(year)
@@ -52,8 +52,9 @@ if __name__ == '__main__':
                     # merge_df[year] = '0'
                     for _, row in df.iterrows():
                         label = row[0] # 增值服務/網絡廣告/..
-                        label = re.sub('[\(\d\)]', '', label) # 去掉(1), (2), ..
+                        label = re.sub('[\(\d\)*]', '', label) # 去掉(1), (2), ..
                         if label != '0' and label != '':
+                            label = label + '_成本'
                             if label not in merge_json:
                                 merge_json[label] = {}
                             merge_json[label][year] = row[1]
@@ -74,7 +75,6 @@ if __name__ == '__main__':
     df = pd.DataFrame(data, columns=column_names)
     file_name = os.path.splitext(os.path.basename(__file__))[0]
     df.to_csv(os.path.join(today_dir(), file_name + '.csv'), index=False)
-
                             
 
                 

@@ -60,6 +60,7 @@ if __name__ == '__main__':
                             merge_json[label][year] = row[1]
     # 转为 dataframe
     years.sort()
+    years.sort(reverse=True)
     column_names = [0]
     for year in years:
         column_names.append(year)

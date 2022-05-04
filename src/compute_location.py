@@ -67,7 +67,7 @@ def compute_location(df):
 
     # df = pd.read_csv(filepath)
     df = cluster(df, 'top')
-    df = cluster(df, 'left', eps=10, min_samples=1)
+    df = cluster(df, 'left', eps=30, min_samples=1)
     df['right'] = df['left'] + df['width']
     df = cluster(df, 'right', eps=10, min_samples=1)
 
@@ -97,7 +97,7 @@ def compute_location(df):
     columns = [i for i in range(column_name_initial_value, column_name_initial_value+column_count)]
     data = []
     for _, value in pre_data.items():
-        list = [0] * column_count
+        list = [''] * column_count
         for k, v in value.items():
             list[k] = v['words']
             columns[k] = v['left']   # 选用最后一行的左坐标，开头几行是文字标题坐标不太合适，比如：(人民幣百萬元，另有指明者除外)
@@ -122,7 +122,8 @@ from config import today_dir
 import os
 from load_json import load_json
 if __name__ == '__main__':
-    for dir_path, dir_list, file_name_list in os.walk(today_dir()):
+    dir = os.path.join(today_dir(), 'tencent', 'active_user')
+    for dir_path, dir_list, file_name_list in os.walk(dir):
         for file_name in file_name_list:
             file_path = os.path.join(dir_path, file_name)
             if os.path.splitext(file_path)[1] == '.json':

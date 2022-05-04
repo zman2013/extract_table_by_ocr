@@ -4,6 +4,9 @@
 # 获取指定行、从指定单元格获取时间
 # 添加到汇总的 dataframe
 
+from audioop import reverse
+
+
 number_mapping = {
     '零': '0',
     '一': '1',
@@ -59,6 +62,7 @@ if __name__ == '__main__':
                             merge_json[label][year] = row[1]
     # 转为 dataframe
     years.sort()
+    years.sort(reverse=True)
     column_names = [0]
     for year in years:
         column_names.append(year)

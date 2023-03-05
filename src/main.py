@@ -8,6 +8,7 @@ import os
 import time
 
 if __name__ == '__main__':
+    print("start")
     timestr = time.strftime('%H:%M:%S', time.localtime(time.time()))
     filepath = today_dir() + timestr + '.json'
     image = load_image_from_clipboard()

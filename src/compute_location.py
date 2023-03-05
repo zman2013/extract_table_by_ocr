@@ -67,12 +67,13 @@ def compute_location(df):
 
     # df = pd.read_csv(filepath)
     df = cluster(df, 'top')
-    df = cluster(df, 'left', eps=30, min_samples=1)
+    df = cluster(df, 'left', eps=10, min_samples=1)
     df['right'] = df['left'] + df['width']
-    df = cluster(df, 'right', eps=10, min_samples=1)
+    df = cluster(df, 'right', eps=5, min_samples=1)
 
     df = combine_left_right_labels(df)
 
+# 数据格式
 # {
 #   top_cluster : {
 #     left_cluster : {
@@ -106,6 +107,8 @@ def compute_location(df):
     df = pd.DataFrame(data, columns=columns)
 
 #   删除没有用到的 columns
+#   用到的 column 的 name 都被置为 left 值
+#   没被用到的 column 的 name 都 >= column_name_initial_value（1_000_000_000）
     columns_drop = []
     for column_name in df.columns.values.tolist():
         if column_name >= column_name_initial_value:
@@ -113,6 +116,7 @@ def compute_location(df):
     df = df.drop(columns_drop, axis=1)
 
 #   按 column name 大小排序
+#   column name 是 top 值
     df = df.reindex(sorted(df.columns), axis=1)
     return df
     df.to_csv(os.path.splitext(filepath)[0] + '.result.csv', index=False)

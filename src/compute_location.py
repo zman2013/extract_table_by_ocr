@@ -135,3 +135,4 @@ if __name__ == '__main__':
                 df = load_json(file_path)
                 df = compute_location(df)
                 df.to_csv(os.path.splitext(file_path)[0]+ '.csv', index=False)  
+

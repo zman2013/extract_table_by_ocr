@@ -1,6 +1,7 @@
 APP_ID = ''
 API_KEY = ''
 SECRECT_KEY = ''
+OPENAI_API_KEY = ''
 
 root_dir = './data/'
 import datetime

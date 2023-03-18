@@ -7,6 +7,7 @@ def load_data_from_file(file_path):
                 key, value = line.split(":") # assuming each line has format "key:value"
                 data_map[key.strip()] = value.strip()
     except FileNotFoundError:
+        print(f"file not found: {file_path}")
         return data_map
     else:
         return data_map

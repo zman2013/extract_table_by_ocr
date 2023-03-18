@@ -18,3 +18,9 @@
 # ocr api：
     https://cloud.baidu.com/product/ocr/general
     https://cloud.baidu.com/doc/OCR/s/7kibizyfm#%E9%80%9A%E7%94%A8%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB%EF%BC%88%E6%A0%87%E5%87%86%E7%89%88%EF%BC%89
+
+
+# 翻译 prompt
+将以下文字翻译成简体中文，以列表形式输出，第一列是原始文字，第二列是简体中文，去掉文字两端的单引号，去掉 nan。
+
+{item list}

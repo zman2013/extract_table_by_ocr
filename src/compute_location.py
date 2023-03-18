@@ -115,6 +115,13 @@ def compute_location(df):
             columns_drop.append(column_name)
     df = df.drop(columns_drop, axis=1)
 
+    # Get duplicate column names
+    # duplicate_columns = df.columns[df.columns.duplicated()]
+    # print(f"duplicate_columns: {duplicate_columns}")
+
+    # Drop duplicate columns
+    # df = df.drop(columns=duplicate_columns)
+
 #   按 column name 大小排序
 #   column name 是 top 值
     df = df.reindex(sorted(df.columns), axis=1)

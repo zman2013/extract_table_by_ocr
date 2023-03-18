@@ -33,7 +33,7 @@ def load_csv_files(file_list):
     
     for file_path in file_list:
         # 检查文件是否是CSV格式，并且过滤掉文件 finance.csv 
-        if not file_path.endswith('.csv') or os.path.basename(file_path) == 'finance.csv':
+        if not file_path.endswith('.csv') or 'finance.csv' in os.path.basename(file_path):
             continue
         
         # 读取文件，并将内容添加到 DataFrame 中
@@ -96,7 +96,7 @@ def add_dataframe_to_csv(dataframe, file_path):
     df.to_csv(file_path, index=False)
 
 
-# 写一个 python main 结束两个命令行参数，分别是文件夹路径和文件路径
+# 写一个 python main 接收两个命令行参数，分别是文件夹路径和文件路径
 # 其中文件夹路径必选，文件路径可选
 # 如果文件路径参数不存在，就在文件夹下创建文件，名文:finance.csv
 import sys
@@ -119,14 +119,18 @@ def main(directory_path, dictionary, file_path=None):
 
     # If file path is not provided, create a finance.csv file in the directory
     if file_path is None:
-        file_path = os.path.join(directory_path, 'finance.csv')
+        last_folder_name = os.path.basename(os.path.normpath(directory_path))
+        file_path = os.path.join(directory_path, last_folder_name+'.finance.csv')
         with open(file_path, 'w') as f:
             pass
 
     file_list = list_files(directory_path)
     df = load_csv_files(file_list)
     # 翻译财报条目为简体中文
-    df = translate_to_simplified_chinese(df, dictionary)
+    [df, missed_keys] = translate_to_simplified_chinese(df, dictionary)
+    print(f"未能翻译的条目如下: \n\n")
+    for key in missed_keys:
+        print(key)
     add_dataframe_to_csv(df, file_path)
 
 # prompt: 定义一个 function，参数是: dataframe，dictionary。
@@ -145,15 +149,18 @@ def translate_to_simplified_chinese(dataframe, dictionary, default_value='N/A'):
     instead. The resulting values will be added as a new column to the dataframe.
     """
     new_column = []
+    missed_keys = []
     for _index, row in dataframe.iterrows():
         key = row[0]
         if key in dictionary:
             value = dictionary[key]
         else:
             value = default_value
+            missed_keys.append(key)
+            
         new_column.append(value)
     dataframe.insert(1, '项目', new_column)
-    return dataframe
+    return [dataframe, missed_keys]
 
 
 from dictionary import load_data_from_file 
@@ -163,7 +170,7 @@ if __name__ == "__main__":
         directory_path = sys.argv[1]
         file_path = sys.argv[2] if len(sys.argv) > 2 else None
         print("start")
-        dictionary = load_data_from_file('dictionary.json')
+        dictionary = load_data_from_file('src/dictionary.dict')
         main(directory_path, dictionary, file_path)
     except Exception as e:
         # 打印详细的堆栈信息

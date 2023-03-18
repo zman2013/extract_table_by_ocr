@@ -5,6 +5,7 @@
     2. 使用剪贴板截图表格
     3. 运行 main.py
     4. 在当前目录下查找 data 文件夹下面的 .csv
+    5. 执行 main2.py directory，可以将 directory 下所有的 csv 文件合并为一个文件，并进行去重相关操作
 # 模块说明
 ## load_image_from_clipboard.py
     从剪贴板获取图片内容

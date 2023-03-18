@@ -1,24 +1,3 @@
-# 创建一个初始化 function, 初始化一个 map，里面初始化一对 (key, value)
-def init_map(key, value):
-    my_map = {key: value}
-    return my_map
-
-# prompt: 创建一个方法，将 map 保存到文件中
-def save_map_to_file(map_obj, file_path):
-    """
-    This method saves a dictionary object to a file.
-    :param map_obj: The map or dictionary object to be saved.
-    :param file_path: The path and filename where the data is to be saved.
-    :return: None
-    """
-    try:
-        with open(file_path, 'w') as file:
-            for key, value in map_obj.items():
-                file.write(f"{key}: {value}\n")
-        print("Data saved successfully!")
-    except Exception as e:
-        print(f"Error saving data to file: {str(e)}")
-
 # prompt: 创建一个 function，从文件中加载数据到 map 中，并返回 map
 def load_data_from_file(file_path):
     data_map = {}

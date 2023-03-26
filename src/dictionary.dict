@@ -296,19 +296,19 @@ Other non-recourse debt:其他非追索权债务
 Recourse debt:追索债务
 Total debt excluding vehicle and energy product financing:不包括车辆和能源产品融资在内的债务总额
 REVENUES:总收入
-Automotive sales:汽车销售
-Automotive regulatory credits:汽车监管信用
-Automotive leasing:汽车租赁
-Total automotive revenue:汽车总收入
-Energy generation and storage:能源生产和储存
-Services and other:服务及其他
+Automotive sales REVENUES:车辆销售收入
+Automotive regulatory credits REVENUES:车辆监管信用收入
+Automotive leasing REVENUES:车辆租赁收入
+Total automotive revenue:车辆总收入
+Energy generation and storage REVENUES:能源生产和储存收入
+Services and other REVENUES:服务及其他收入
 Total revenues:收入总额
 COST OF REVENUES:收益成本
-Automotive sales:汽车销售
-Automotive leasing:汽车租赁
-Total automotive cost of revenues:汽车收益成本总额
-Energy generation and storage:能源生产和储存
-Services and other:服务及其他
+Automotive sales COST:车辆销售成本
+Automotive leasing COST:车辆租赁成本
+Total automotive cost of revenues:车辆收益成本总额
+Energy generation and storage COST:能源生产和储存成本
+Services and other COST:服务及其他成本
 Total cost of revenues:销售成本总额
 Gross profit:毛利润
 OPERATING EXPENSES:经营支出
@@ -325,3 +325,4 @@ Provision for income taxes:缴纳所得税
 NET INCOME:净收入
 Net income (loss) attributable to noncontrolling interests and redeemable noncontrolling interests in subsidiaries:归属于非控制权益和可赎回的非控制权益的子公司的净收益（损失）
 NET INCOME ATTRIBUTABLE TO COMMON STOCKHOLDERS:归属于普通股股东的净收益
+汽车销量:汽车销量

@@ -49,7 +49,6 @@
 销售成本總額:销售成本总额
 毛利:毛利
 营業費用:营业费用
-研發:研发
 销售·一般及行政費用:销售·一般及行政费用
 其他經營收入:其他经营收入
 營業費用總額:营业费用总额
@@ -135,8 +134,9 @@
 歸屬於理想汽车普通股股东的綜合損:归属于理想汽车普通股股东的综合损失
 流動負債:流动负债
 流動負债:流动负债
-遞延收益，流動:递延收益，流动
-經營租賃負債，流動:经营租赁负债，流动
+遞延收益，流動:递延收益流动
+經營租賃負債，流動:经营租赁负债流动
+無形資產，淨额:无形资产净额
 預提費用及其他流動负债:预提费用及其他流动负债
 應交税費:应交税费
 非流動負债:非流动负债
@@ -213,7 +213,115 @@ XPeng Inc.普通股股東應佔淨虧损:XPeng Inc.普通股股东应占净亏�
 無形資產，淨额:无形资产，净额
 土地使用權淨额:土地使用权净额
 應收分期付款淨额:应收分期付款净额
-销售及營销:销售及营销
-一般及行政:一般及行政
-運營:运营
-總計:总计
+研發人员:研发人员
+销售及營销人员:销售和营销人员
+一般及行政人员:一般和行政管理人员
+運營人员:运营人员
+總計人员:总计人员
+汽车销售收入:车辆销售收入
+其他销售收入:其他销售和服务收入
+汽车销售成本:车辆销售成本
+其他销售成本:其他销售和服务成本
+研發费用:研发费用
+销售、一般及行政費用:销售、一般和管理费用
+服务及其他销售收入:其他销售和服务收入
+總收入:收入总额
+服务及其他销售成本:其他销售和服务成本
+總銷售成本:销售成本总额
+研發開支:研发费用
+销售、一般及行政開支:销售、一般和管理费用
+經營開支總額:营业费用总额
+生產人员:生产人员
+CASH FLOWS FROM OPERATING ACTIVITIES:经营活动产生的现金流量
+Net income:净收入
+Adjustments to reconcile net income to net cash provided by operating activities:调整净收入，以便与经营活动产生的净现金相一致
+Depreciation, amortization and impairment:折旧、摊销和减值
+Stock-based compensation:股票-based报酬
+Other:其他
+Changes in operating assets and liabilities, net of effect of business combinations:经营性资产和负债的变动（除合并业务影响外）净额
+Net cash provided by operating activities:经营活动产生的净现金
+CASH FLOWS FROM INVESTING ACTIVITIES:投资活动产生的现金流量
+Capital expenditures:固定资产投资
+Purchases of solar energy systems, net of sales:太阳能系统购买净额减销售净额
+Proceeds from sales of digital assets:数字资产出售收益
+Purchases of investments:投资购买款项
+Proceeds from maturities of investments:投资到期返还款项
+Receipt of government grants:政府补助金收到款项
+Purchase of intangible assets:无形资产购置款
+Net cash used in investing activities:投资活动使用的净现金
+CASH FLOWS FROM FINANCING ACTIVITIES:筹资活动产生的现金流量
+Net cash flows from other debt activities:其他债务活动产生的净现金流量
+Net (repayments) borrowings under vehicle and energy product financing:车辆和能源产品融资下的净借款（偿还款）
+Net cash flows from noncontrolling interests- Solar:太阳能项目中持股不足占主导权但具有投资能力的资金流量净额
+Other:其他
+Net cash used in financing activities:筹资活动使用的净现金
+Effect of exchange rate changes on cash and cash equivalents and restricted cash:汇率变动对现金和现金等价物及受限制现金的影响
+Net increase (decrease) in cash and cash equivalents and restricted cash:现金和现金等价物及受限制现金的净增加（减少）
+Cash and cash equivalents and restricted cash at beginning of period:期初现金和现金等价物及受限制现金
+Cash and cash equivalents and restricted cash at end of period:期末现金、现金等价物及受限制现金
+ASSETS:资产
+Current assets:流动资产
+Cash, cash equivalents and investments:现金、现金等价物和投资
+Accounts receivable, net:应收账款净额
+Inventory:存货
+Prepaid expenses and other current assets:预付费用和其他流动资产
+Total current assets:总流动资产
+Operating lease vehicles, net:租赁车辆净值
+Solar energy systems, net:太阳能系统的净值
+Property, plant and equipment, net:不动产、工厂和设备的净值
+Operating lease right-of-use assets:租赁权使用资产
+Digital assets, net:数字资产净额
+Goodwill and intangible assets, net:商誉和无形资产净额
+Other non-current assets:其他非流动资产
+Total assets:总资产
+LIABILITIES AND EQUITY:负债和股东权益
+Current liabilities:流动负债
+Accounts payable:应付账款
+Accrued liabilities and other:应计负债及其他
+Deferred revenue:递延收入
+Customer deposits:客户存款
+Current portion of debt and finance leases (1):当前应偿还的债务和融资租赁（1）
+Total current liabilities:总流动负债
+Debt and finance leases, net of current portion (1):减去当前部分后的债务和融资租赁（1）
+Deferred revenue, net of current portion:减去当前部分后的递延收入
+Other long-term liabilities:其他长期负债
+Total liabilities:总负债
+Redeemable noncontrolling interests in subsidiaries:可赎回子公司的非控制权益
+Total stockholders' equity:股东权益总额
+Noncontrolling interests in subsidiaries:子公司的非控制权益
+Total liabilities and equity:负债和股东权益总额
+(1)Breakdown of our debt is as follows:(1)我们债务的细分如下
+Vehicle and energy product financing (non-recourse):车辆和能源产品融资（非追索权）
+Other non-recourse debt:其他非追索权债务
+Recourse debt:追索债务
+Total debt excluding vehicle and energy product financing:不包括车辆和能源产品融资在内的债务总额
+REVENUES:总收入
+Automotive sales:汽车销售
+Automotive regulatory credits:汽车监管信用
+Automotive leasing:汽车租赁
+Total automotive revenue:汽车总收入
+Energy generation and storage:能源生产和储存
+Services and other:服务及其他
+Total revenues:收入总额
+COST OF REVENUES:收益成本
+Automotive sales:汽车销售
+Automotive leasing:汽车租赁
+Total automotive cost of revenues:汽车收益成本总额
+Energy generation and storage:能源生产和储存
+Services and other:服务及其他
+Total cost of revenues:销售成本总额
+Gross profit:毛利润
+OPERATING EXPENSES:经营支出
+Research and development:研发费用
+Selling, general and administrative:销售、一般和管理费用
+Restructuring and other:重组及其他费用
+Total operating expenses:营业费用总额
+INCOME FROM OPERATIONS:营业收入
+Interest income:利息收入
+Interest expense:利息支出
+Other income (expense), net:其他收益（费用）净额
+INCOME BEFORE INCOME TAXES:扣除所得税前收入
+Provision for income taxes:缴纳所得税
+NET INCOME:净收入
+Net income (loss) attributable to noncontrolling interests and redeemable noncontrolling interests in subsidiaries:归属于非控制权益和可赎回的非控制权益的子公司的净收益（损失）
+NET INCOME ATTRIBUTABLE TO COMMON STOCKHOLDERS:归属于普通股股东的净收益

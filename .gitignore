@@ -5,3 +5,4 @@ bin
 share
 data
 **/__pycache__/
+.vscode

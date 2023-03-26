@@ -121,8 +121,10 @@ def main(directory_path, dictionary, file_path=None):
     if file_path is None:
         last_folder_name = os.path.basename(os.path.normpath(directory_path))
         file_path = os.path.join(directory_path, last_folder_name+'.finance.csv')
-        with open(file_path, 'w') as f:
-            pass
+
+        if not os.path.exists(file_path):
+            with open(file_path, 'w') as f:
+                pass
 
     file_list = list_files(directory_path)
     df = load_csv_files(file_list)
@@ -167,7 +169,8 @@ from dictionary import load_data_from_file
 
 if __name__ == "__main__":
     try:
-        directory_path = sys.argv[1]
+#        directory_path = sys.argv[1]
+        directory_path = 'data/tesla'
         file_path = sys.argv[2] if len(sys.argv) > 2 else None
         print("start")
         dictionary = load_data_from_file('src/dictionary.dict')

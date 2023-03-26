@@ -6,6 +6,11 @@
     3. 运行 main.py
     4. 在当前目录下查找 data 文件夹下面的 .csv
     5. 执行 main2.py directory，可以将 directory 下所有的 csv 文件合并为一个文件，并进行去重相关操作
+        a. python src/main2.py data/LI-2015
+        b. python src/main2.py data/NIO-9866
+        c. python src/main2.py data/xpeng-9868
+        d. python src/main2.py data/tesla       // https://ir.tesla.com/#quarterly-disclosure
+    6. 执行 main3.py，将理想、蔚来、小鹏、特斯拉的财务报表合并为一个文件
 # 模块说明
 ## load_image_from_clipboard.py
     从剪贴板获取图片内容
